@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "simple bar chart with embedded data",
+  "data": {"url": "https://raw.githubusercontent.com/vega/vega-datasets/next/data/cars.json"},
+  "facet":{"row": {"field": "Origin", "type": "nominal",
+          "header": {
+            "title": null,
+            "labels": false
+          }
+        }
+},
+  "spec": {
+    "layer":[
+      {
+      "mark": {
+        "type": "rect",
+        "width": 300, 
+        "height": 60, 
+        "color":"white", 
+        "stroke":"tomato",
+        "strokeWidth": 3,
+      "align":"left"},
+      "encoding": {
+        "text":{"field": "Origin", "type": "nominal"}
+      }
+    },
+      {
+      "mark":{"type": "text", "fontSize": 16, "dx": 6, "dy": -8},
+      "encoding":{"text": {"field": "Origin", "type": "nominal"}}
+        },
+        {
+      "mark":{"type": "text", "fontSize": 16, "dx": 36, "dy": -8},
+      "encoding":{"text": {"field": "Cylinders", "aggregate":"max", "type": "quantitative"}}
+        },
+      {
+      "mark":{"type": "text", "fontSize": 16, "dx": 96, "dy": -8},
+      "encoding":{"text": {"field": "Displacement", "aggregate":"mean", "type": "quantitative", "format": ".2f"}}
+        }
+  ]
+  },
+  "config": {
+    "axis": {"grid": true, "tickBand": "extent"}
+  }
+}
